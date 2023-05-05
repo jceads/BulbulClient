@@ -10,12 +10,12 @@ import retrofit2.http.Query
 
 interface PostService {
 
-	@GET("${ClientEndpoints.BULBULS}/user/{userId}")
+	@GET("user/{userId}")
 	suspend fun getUsersPosts(
 		@Path("userId") userId:String,
 		@Query("step") step:Int?,
 		@Query("limit") limit:Int = 5
-	):List<Bulbul>
+	):Response<List<Bulbul>>
 
 	@GET(ClientEndpoints.BULBULS+"bulbul")
 	suspend fun getBulbulById(

@@ -24,7 +24,11 @@ class PostRepositoryImpl @Inject constructor(
 		emit(Resource.Loading())
 		try {
 			val response = api.getUsersPosts(userId,step,limit)
-			emit(Resource.Succes(response))
+			Log.d(TAG,response.raw().request.toString())
+			Log.d(TAG,response.isSuccessful.toString())
+			if (response.isSuccessful){
+				emit(Resource.Succes(response.body()))
+			}
 
 		}catch (e:HttpException){
 			emit(Resource.Error(e.message()))
