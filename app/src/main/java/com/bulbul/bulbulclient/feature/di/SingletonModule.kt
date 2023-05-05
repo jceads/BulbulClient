@@ -23,7 +23,7 @@ object SingletonModule {
 			.baseUrl(ClientEndpoints.BASE_URL)
 			.addConverterFactory(GsonConverterFactory.create())
 			.build()
-			.create()
+			.create(PostService::class.java)
 	}
 
 	@Provides

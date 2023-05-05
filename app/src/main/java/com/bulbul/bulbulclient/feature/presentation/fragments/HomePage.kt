@@ -25,7 +25,10 @@ class HomePage : Fragment(R.layout.fragment_home_page) {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		viewModel.getData()
+//		viewModel.getData()
+		binding.getDataBtn.setOnClickListener {
+			viewModel.getById("08db3ed2-fdbf-4206-87a2-7650aa121b0a")
+		}
 		super.onViewCreated(view, savedInstanceState)
 	}
 }

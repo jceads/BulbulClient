@@ -30,4 +30,18 @@ class HomeViewModel @Inject constructor(
 				}
 		}
 	}
+
+	fun getById(bulbulId:String){
+		viewModelScope.launch(Dispatchers.IO) {
+			repo.getBulbulById(bulbulId).collectLatest {
+				result->when(result){
+				is Resource.Error -> Log.d(TAG,result.message?:"error")
+				is Resource.Loading -> {}
+				is Resource.Succes -> {
+					Log.d(TAG, (result.data?:"null list").toString())
+				}
+			}
+			}
+		}
+	}
 }
